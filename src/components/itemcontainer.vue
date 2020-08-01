@@ -34,6 +34,7 @@ export default {
 	#itemcontainer{
 
 		width: 100%;
+		height: 100%;
 		padding-top: 10px;
 
 		background-color: var(--sec-bg-color);
@@ -47,6 +48,7 @@ export default {
 
 		transition: border 200ms ease-in-out;
 
+		box-shadow:  1px 1px 5px black;
 	}
 	#itemcontainer:hover{
 
@@ -72,7 +74,7 @@ export default {
 		margin: 0;
 		margin-left: 10px;
 
-		font-size: 1.5vw;
+		font-size: 1.6vw;
 		font-family: 'EunomiaLight';
 		font-weight: 700;
 	}
@@ -117,8 +119,13 @@ export default {
 
 	}
 	img:hover{
+
 		border: 1px solid var(--main-border-color);
+
 		transform: scale(1.01);
+
+		cursor: pointer;
+
 	}
 
 

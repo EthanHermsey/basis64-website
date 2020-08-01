@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-		<menubar v-on:scroll="scrollTo" :itemData="itemData"/>
+		<menubar v-on:scroll="scrollTo" :items="menuItems"/>
 
 		<div id="container">
 
-			<itemcontainer v-on:show="showCard" v-for="(data, index) in itemData" :key="index" :item="data" :itemIndex="index" ref="items"/>
+			<itemcontainer v-on:show="showCard" v-for="(item, index) in itemData" :key="index" :item="item" :itemIndex="index" ref="items"/>
 
 		</div>
 
@@ -29,8 +29,8 @@ export default {
 	data: function () {
 
 		return {
-			itemData: Array,
-
+			itemData: [],
+			menuItems: [],
 			cardIsShown: false,
 			cardData: {
 
@@ -76,6 +76,11 @@ export default {
 			.then( data => {
 
 				this.itemData = data;
+				this.menuItems = this.itemData.map( item =>{
+
+					return item.title;
+
+				} );
 
 			} );
 
@@ -142,14 +147,15 @@ export default {
 	}
 
 	#container{
-		width: calc( 80vw - (15px * 3) );
+		width: calc( 80vw - (20px * 3) );
 		margin-left: 15vw;
-		padding-top: 15px;
+		padding-top: 20px;
+
 
 		display: grid;
 		grid-template-columns: repeat(4, 25%);
-		row-gap: 15px;
-		column-gap: 15px;
+		row-gap: 30px;
+		column-gap: 20px
 	}
 
 
@@ -161,10 +167,11 @@ export default {
 			padding-top: 65px;
 			padding-bottom: 5vh;
 
-			width: calc(90vw - (2 * 15px));
+			width: calc(90vw - (2 * 20px));
 
 
 			grid-template-columns: repeat(3, 33.33%);
+			row-gap: 30px;
 
 		}
 
@@ -177,7 +184,7 @@ export default {
 			margin-left: 5%;
 			width: calc(90% - 5px);
 			grid-template-columns: repeat(2, 50%);
-			row-gap: 15px;
+			row-gap: 25px;
 			column-gap: 15px;
 
 		}
